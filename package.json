@@ -19,5 +19,6 @@
   "bin": {
     "ycd": "./bin/yandex-contest-downloader.js"
   },
-  "preferGlobal": true
+  "preferGlobal": true,
+  "preinstall": "npm install"
 }
