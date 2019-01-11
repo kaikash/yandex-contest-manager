@@ -84,6 +84,7 @@ Downloader::saveProblem = (problemUrl) ->
   dom = new JSDOM res.data 
   helpers.mkdir "./#{@outputDir}"
   helpers.mkdir "./#{@outputDir}/#{problemName}"
+  fs.writeFileSync "./#{@outputDir}/#{problemName}/main.#{@extension}", ''
   if @readme
     @createReadme "./#{@outputDir}/#{problemName}/readme.md", dom
 

@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 require('babel-polyfill')
 
 const CoffeeScript = require('coffeescript')
