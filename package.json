@@ -1,0 +1,19 @@
+{
+  "name": "yandex-contest-downloader",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.2.2",
+    "axios": "^0.18.0",
+    "babel": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "chalk": "^2.4.2",
+    "coffeescript": "^2.3.2",
+    "commander": "^2.19.0",
+    "form-data": "^2.3.3",
+    "jsdom": "^13.1.0",
+    "turndown": "^5.0.1"
+  }
+}
