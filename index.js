@@ -6,7 +6,7 @@ const { compile } = CoffeeScript;
 CoffeeScript.compile = (file, options) => (
   compile(file, Object.assign(options, {
     transpile: {
-      presets: ['env'],
+      presets: ['@babel/preset-env'],
     },
   }))
 )
