@@ -1,11 +1,11 @@
-import chalk from 'chalk'
-import axios from 'axios'
-import _ from 'lodash'
-import { JSDOM } from 'jsdom'
-import qs from 'querystring'
-import fs from 'fs'
-import helpers from './helpers.coffee'
-import TurndownService from 'turndown'
+chalk = require 'chalk'
+axios = require 'axios'
+_ = require 'lodash'
+{ JSDOM } = require 'jsdom'
+qs = require 'querystring'
+fs = require 'fs'
+helpers = require './helpers.coffee'
+TurndownService = require 'turndown'
 
 class Downloader
   constructor: (@options) ->
@@ -95,6 +95,4 @@ Downloader::createReadme = (filename, dom) ->
   fs.writeFileSync filename, markdown
 
 
-
-
-export default Downloader
+module.exports = Downloader

@@ -1,6 +1,6 @@
 packageFile = require '../package.json'
-import program from 'commander'
-import Downloader from './downloader.coffee'
+program = require 'commander'
+Downloader = require './downloader.coffee'
 
 program
   .version packageFile.version, '-v, --version'

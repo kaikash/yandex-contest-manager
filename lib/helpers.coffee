@@ -1,4 +1,4 @@
-import fs from 'fs'
+fs = require 'fs'
 
 
 mkdir = (dirName) ->
@@ -8,7 +8,6 @@ mkdir = (dirName) ->
 writeFile = (filename, data) ->
   fs.writeFileSync filename, data
 
-export default {
-  mkdir
-  writeFile
-}
+module.exports =
+  mkdir: mkdir
+  writeFile: writeFile
