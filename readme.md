@@ -105,12 +105,12 @@ ycm --id <id> --no-readme
 
 ```
 
-## TODO
+## ToDo
 
 1. Progress loader
 2. Add `ycm upload` support
 3. Add `ycm test` support
-4. Save login/password in ~/.ycmconfig.json
+4. Save login/password in `~/.ycmconfig.json`
   
 
 ## Contributing
