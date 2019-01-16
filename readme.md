@@ -1,7 +1,7 @@
 
 # Yandex Contest Manager
 
-`yandex-contest-downloader` is a console application which allows you to download [yandex contest](https://official.contest.yandex.ru) problems
+`yandex-contest-manager` is a console application which allows you to download [yandex contest](https://official.contest.yandex.ru) problems
 
 ## What
 It parses problems from [yandex contest](https://official.contest.yandex.ru) and saves it locally on pc, it generates directories with problems description and files.
@@ -24,7 +24,7 @@ Then you should run in console:
 
 ```bash
 
-npm i -g yandex-contest-downloader
+npm i -g yandex-contest-manager
 
 ```
   
@@ -32,7 +32,7 @@ Or install via `yarn`:
 
 ```bash
 
-yarn global add yandex-contest-downloader
+yarn global add yandex-contest-manager
 
 ```
   
@@ -43,13 +43,13 @@ yarn global add yandex-contest-downloader
 
 ```bash
 
-ycd --help
+ycm --help
 
 ```
 
 ```bash
 
-Usage: ycd [options]
+Usage: ycm [options]
 
 Options:
   -v, --version                output the version number
@@ -61,6 +61,7 @@ Options:
   -R, --no-readme              Do not create readme files
   -d, --domain [domain]        Yandex contest domain (default: "official.contest.yandex.ru")
   -o, --outputDir [dirname]    Output dirname
+  -T, --no-tests               Do not create tests
   -h, --help                   output usage information
 
 ```
@@ -73,7 +74,7 @@ To load contest problem
 ```bash
 
 # it downloads contest problems
-ycd --id <id> 
+ycm --id <id> 
 
 ```
 
@@ -82,11 +83,11 @@ In case, when the contest is private:
 
 # provide username and password
 # Note: works only for https://official.contest.yandex.ru
-ycd --id <id> -u <username> -p <password> 
+ycm --id <id> -u <username> -p <password> 
 
 
 # session must be `Contest_Session_Id` cookie from official.contest.yandex.ru
-ycd --id <id> -s <session> 
+ycm --id <id> -s <session> 
 
 ```
 
@@ -94,24 +95,29 @@ Parse config
 ```bash
 
  # you can set files extension default is `.py`
-ycd --id <id> -e py
+ycm --id <id> -e py
 
 # or you can change output directory
-ycd --id <id> -o my_contest
+ycm --id <id> -o my_contest
 
 # or don't create readme files
-ycd --id <id> --no-readme
+ycm --id <id> --no-readme
 
 ```
 
+## TODO
 
+1. Progress loader
+2. Add `ycm upload` support
+3. Add `ycm test` support
+4. Save login/password in ~/.ycmconfig.json
   
 
 ## Contributing
 
   
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/kaikash/yandex-contest-downloader. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/kaikash/yandex-contest-manager. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
   
   

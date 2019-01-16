@@ -1,6 +1,6 @@
 {
-  "name": "yandex-contest-downloader",
-  "version": "0.1.3",
+  "name": "yandex-contest-manager",
+  "version": "0.1.4",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
@@ -13,7 +13,7 @@
     "turndown": "^5.0.1"
   },
   "bin": {
-    "ycd": "./bin/yandex-contest-downloader.js"
+    "ycm": "./bin/yandex-contest-manager.js"
   },
   "preferGlobal": true,
   "preinstall": "npm install"
