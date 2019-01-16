@@ -1,5 +1,5 @@
 
-# Yandex Contest Downloader
+# Yandex Contest Manager
 
 `yandex-contest-downloader` is a console application which allows you to download [yandex contest](https://official.contest.yandex.ru) problems
 
