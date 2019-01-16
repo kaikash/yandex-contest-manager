@@ -49,7 +49,30 @@ ycm --help
 
 ```bash
 
-Usage: ycm [options]
+Usage: ycm [options] [command]
+
+Options:
+  -v, --version         output the version number
+  -h, --help            output usage information
+
+Commands:
+  download|d [options]  Download contest
+  help [cmd]            display help for [cmd]
+
+```
+
+
+Download contest
+
+```bash
+
+ycm download --help
+
+```
+
+```bash
+
+Usage: ycm download [options]
 
 Options:
   -v, --version                output the version number
@@ -74,7 +97,7 @@ To load contest problem
 ```bash
 
 # it downloads contest problems
-ycm --id <id> 
+ycm d --id <id> 
 
 ```
 
@@ -83,11 +106,11 @@ In case, when the contest is private:
 
 # provide username and password
 # Note: works only for https://official.contest.yandex.ru
-ycm --id <id> -u <username> -p <password> 
+ycm d --id <id> -u <username> -p <password> 
 
 
 # session must be `Contest_Session_Id` cookie from official.contest.yandex.ru
-ycm --id <id> -s <session> 
+ycm d --id <id> -s <session> 
 
 ```
 
@@ -95,17 +118,17 @@ Parse config
 ```bash
 
  # you can set files extension default is `.py`
-ycm --id <id> -e py
+ycm d --id <id> -e py
 
 # or you can change output directory
-ycm --id <id> -o my_contest
+ycm d --id <id> -o my_contest
 
 # or don't create readme files
-ycm --id <id> --no-readme
+ycm d --id <id> --no-readme
 
 ```
 
-## ToDo
+## To do list
 
 1. Progress loader
 2. Add `ycm upload` support
