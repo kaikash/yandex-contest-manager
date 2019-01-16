@@ -4,8 +4,11 @@ _ = require 'lodash'
 { JSDOM } = require 'jsdom'
 qs = require 'querystring'
 fs = require 'fs'
-helpers = require './helpers.coffee'
+helpers = require '../helpers.coffee'
 TurndownService = require 'turndown'
+path = require 'path'
+url = require 'url'
+
 
 class Downloader
   constructor: (@options) ->
@@ -85,12 +88,51 @@ Downloader::saveProblem = (problemUrl) ->
   helpers.mkdir "./#{@outputDir}"
   helpers.mkdir "./#{@outputDir}/#{problemName}"
   fs.writeFileSync "./#{@outputDir}/#{problemName}/main.#{@extension}", ''
+  tests = @prepareTests dom
+  if @tests
+    @createTests "./#{@outputDir}/#{problemName}/tests", tests
   if @readme
+    await @saveImages "./#{@outputDir}/#{problemName}/images", dom
     @createReadme "./#{@outputDir}/#{problemName}/readme.md", dom
 
+Downloader::prepareTests = (dom) ->
+  result = []
+  dom.window.document.querySelectorAll('.sample-tests').forEach (elem) ->
+    headers = elem.querySelectorAll('th')
+    content = elem.querySelectorAll('td')
+    tests = _.zip headers, content
+    elem.innerHTML = ""
+    result.push
+      input: content[0].querySelector('pre').innerHTML
+      output: content[1].querySelector('pre').innerHTML
+    for test in tests
+      elem.innerHTML += "<h5>#{test[0].innerHTML}</h5>"
+      elem.appendChild test[1].querySelector('pre')
+  result
 
-Downloader::createReadme = (filename, dom) ->
+Downloader::createTests = (testsDir, tests) ->
+  helpers.mkdir testsDir
+  for test, ind in tests
+    fs.writeFileSync path.join(testsDir, "input#{ind+1}.txt"), test.input
+    fs.writeFileSync path.join(testsDir, "output#{ind+1}.txt"), test.output
+
+Downloader::saveImages = (imagesDir, dom) ->
+  root = dom.window.document.querySelector '.problem__statement.text'
+  if root.querySelectorAll('img').length > 0
+    helpers.mkdir imagesDir
+  for image in root.querySelectorAll('img')
+    imageUrl = url.resolve "https://#{@domain}/contest/#{@contestId}/problems", image.src
+    imageFilename = path.basename imageUrl
+    image.src = "#{path.basename(imagesDir)}/#{imageFilename}"
+    await helpers.downloadImage imageUrl, path.join imagesDir, imageFilename
+    
+
+Downloader::createReadme = (filename, dom) ->    
   turndownService = new TurndownService
+  turndownService.addRule 'replacePre',
+    filter: 'pre'
+    replacement: (content) ->
+      '```\n' + content + '```\n'
   markdown = turndownService.turndown dom.window.document.querySelector '.problem__statement.text'
   fs.writeFileSync filename, markdown
 
