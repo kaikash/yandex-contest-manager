@@ -103,10 +103,10 @@ Downloader::prepareTests = (dom) ->
     tests = _.zip headers, content
     elem.innerHTML = ""
     result.push
-      input: content[0].querySelector('pre').innerHTML
-      output: content[1].querySelector('pre').innerHTML
+      input: content[0].querySelector('pre').textContent
+      output: content[1].querySelector('pre').textContent
     for test in tests
-      elem.innerHTML += "<h5>#{test[0].innerHTML}</h5>"
+      elem.innerHTML += "<h5>#{test[0].textContent}</h5>"
       elem.appendChild test[1].querySelector('pre')
   result
 
